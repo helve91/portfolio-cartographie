@@ -2,11 +2,14 @@
 title: "Méthode K-Means pour le cacao"
 format: html
 ---
+# Mon analyse
+## Mosaïque et K-means sur GEE
+
+Le Tri-National de la Sangha se trouvant en région tropicale humide, les images satellitaires propres sans perturbations atmosphériques sont difficilement accessibles et même agglomérer les images Landsat ou Sentinel-2 avec un couvert nuageux faible de moins de 30% sur 1 an ne couvre pas tout le territoire forestier. Il faut ajouter à cela que le cacao dans le TNS pousse sous canopée dans des petites exploitations familiales et qu'il est donc difficilement repérable. En l'absence d'un nombre suffisant de champs de cacao pour permettre une détection par machine learning, et après de nombreux tests sur des données images, la première méthode a été de mosaïquer les images Landsat du territoire sur 1 an et demi puis découper l'image obtenue. On a ainsi divisé le TNS en 48 entités en fonction des coutures (discontinuités dues aux conditions de prise des images) afin d'effacer cet obstacle à l'identification du cacao.
+Compte tenu de la mauvaise connaissance du territoire, c'est le K-means qui a été choisi pour partager les images en 20 classes du sol. Un nombre plus grand de couches pourrait être envisagé car toutes les parties du TNS n'ont pas la même amplitude QGIS ne supportant pas les opérations trop lourdes, les étapes sus-mentionnées seront réalsées en JavaScript sur Google Earth Engine:
+
 <script>
 // == Imports ==
-// Ici "zone" est un vecteur à 48 entités. Il a été créé pour séparer les zones de l'image prises dans des conditions différentes et éviter les seams 
-// L'image totale va être découpée en 48 rasters et un k-means à 19 classes sera effectué sur les bandes de chaque raster.
-// Après une comparaison avec la bande NIR, on va pouvoir obtenir
 
 var zone = table.geometry();
 
@@ -249,3 +252,8 @@ for (var i = 0; i < nb; i++) {
 
 }
 </script>
+
+## Comparaison NIR-classification
+
+Les 48 images sont ensuite extraites de Google Drive pour être traitées dans QGIS: c'est là que l'utilisateur va rassembler les 20 classes. En comparant avec les images NIR (proche-infrarouge) qui distinguent bien l'agroforesterie (ou se trouve le cacao), il pourra trier la ou les classes qui sont le plus susceptibles d'en faire partie.
+En période de pluies fortes et de maximum végétatif (fin novembre- fin mars) les agroforêts sous ombrage, plus jeunes émettent fortement dans le proche infrarouge, plus que les forêts mais moins que les cultures à ciel ouvert. En période de déclin végétatif ou de moindres pluies (fin novembre- fin mars) leur réflectance moyenne dans le proche infrarouge les distingue du reste de la végétation et particulièrement des cultures à ciel ouvert qui n'émettent plus dans ces longueurs d'onde. En augmentant les contrastes des images, les agroforêts sous ombrages deviennent évidentes. Le NDVI des agroforêts est aussi plus fort que celui des forêts primaires aux alentours.
