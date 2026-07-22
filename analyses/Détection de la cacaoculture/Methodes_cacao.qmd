@@ -6,9 +6,12 @@ author: Rodrigue da Silva
 # Mes analyses
 ## Méthode 1: Mosaïque et K-means sur GEE
 
-Le Tri-National de la Sangha se trouvant en région tropicale humide, les images satellitaires propres sans perturbations atmosphériques sont difficilement accessibles et même agglomérer les images Landsat ou Sentinel-2 avec un couvert nuageux faible de moins de 30% sur 1 an ne couvre pas tout le territoire forestier. Il faut ajouter à cela que le cacao dans le TNS pousse sous canopée dans des petites exploitations familiales et qu'il est donc difficilement repérable. 
-En l'absence d'un nombre suffisant de champs de cacao pour permettre une détection par machine learning, et après de nombreux tests sur des données images, la première méthode a été de mosaïquer les images Landsat du territoire sur 1 an et demi puis découper l'image obtenue. On a ainsi divisé le TNS en 48 entités en fonction des coutures (discontinuités dues aux conditions de prise des images) afin d'effacer cet obstacle à l'identification du cacao.
-Compte tenu de la mauvaise connaissance du territoire, c'est le K-means qui a été choisi pour partager les images en 20 classes du sol. Un nombre plus grand de couches pourrait être envisagé car toutes les parties du TNS n'ont pas la même amplitude QGIS ne supportant pas les opérations trop lourdes, les étapes sus-mentionnées seront réalsées en JavaScript sur Google Earth Engine:
+Le Tri-National de la Sangha se trouvant en région tropicale humide, les images satellitaires propres sans perturbations atmosphériques sont difficilement accessibles et même agglomérer les images Landsat ou Sentinel-2 avec un couvert nuageux faible de moins de 30% sur 1 an ne couvre pas tout le territoire forestier. 
+Il faut ajouter à cela que le cacao dans le TNS pousse sous canopée dans des petites exploitations familiales et qu'il est donc difficilement repérable. 
+En l'absence d'un nombre suffisant de champs de cacao pour permettre une détection par machine learning, et après de nombreux tests sur des données images, la première méthode a été de mosaïquer les images Landsat du territoire sur 1 an et demi puis découper l'image obtenue. 
+On a ainsi divisé le TNS en 48 entités en fonction des coutures (discontinuités dues aux conditions de prise des images) afin d'effacer cet obstacle à l'identification du cacao.
+Compte tenu de la mauvaise connaissance du territoire, c'est le K-means qui a été choisi pour partager les images en 20 classes du sol. 
+Un nombre plus grand de couches pourrait être envisagé car toutes les parties du TNS n'ont pas la même amplitude QGIS ne supportant pas les opérations trop lourdes, les étapes sus-mentionnées seront réalsées en JavaScript sur Google Earth Engine:
 
 <script>
 // == Imports ==
