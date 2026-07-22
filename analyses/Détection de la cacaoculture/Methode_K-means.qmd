@@ -1,5 +1,5 @@
 ---
-title: "Méthodes pour la détéction des agroforesteries cacaoyères"
+title: "Méthodes pour la détéction des agroforesteries cacaoyères sans échantillons terrain ni machine learning"
 format: html
 ---
 # Mes analyses
