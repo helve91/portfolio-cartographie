@@ -93,6 +93,8 @@ body {
 
 .main-container {
 
+    font-family: Arial, sans-serif;
+    
     max-width: 900px;
 
     margin: 50px auto;
