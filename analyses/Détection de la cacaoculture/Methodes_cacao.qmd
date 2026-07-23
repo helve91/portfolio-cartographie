@@ -3,8 +3,10 @@ title: "Méthodes pour la détéction des agroforesteries cacaoyères sans écha
 format: html
 author: Rodrigue da Silva
 ---
-# Méthode 1: Méthode K-means (classification non-supervisée)..
-## Mosaïque et calcul K-means sur GEE..
+# Méthode 1: Méthode K-means (classification non-supervisée)
+
+## Mosaïque et calcul K-means sur GEE
+
 Le Tri-National de la Sangha se trouvant en région tropicale humide, les images satellitaires propres sans perturbations atmosphériques sont difficilement accessibles et même agglomérer les images Landsat ou Sentinel-2 avec un couvert nuageux faible de moins de 30% sur 1 an ne couvre pas tout le territoire forestier. 
 Il faut ajouter à cela que le cacao dans le TNS pousse sous canopée dans des petites exploitations familiales et qu'il est donc difficilement repérable. 
 En l'absence d'un nombre suffisant de champs de cacao pour permettre une détection par machine learning, et après de nombreux tests sur des données images, la première méthode a été de mosaïquer les images Landsat du territoire sur 1 an et demi puis découper l'image obtenue. 
