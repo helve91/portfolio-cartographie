@@ -3,9 +3,8 @@ title: "Méthodes pour la détéction des agroforesteries cacaoyères sans écha
 format: html
 author: Rodrigue da Silva
 ---
-# Mes analyses
-## Méthode 1: Mosaïque et K-means sur GEE
-
+# Méthode 1: Méthode K-means (classification non-supervisée)
+## Mosaïque et calcul K-means sur GEE
 Le Tri-National de la Sangha se trouvant en région tropicale humide, les images satellitaires propres sans perturbations atmosphériques sont difficilement accessibles et même agglomérer les images Landsat ou Sentinel-2 avec un couvert nuageux faible de moins de 30% sur 1 an ne couvre pas tout le territoire forestier. 
 Il faut ajouter à cela que le cacao dans le TNS pousse sous canopée dans des petites exploitations familiales et qu'il est donc difficilement repérable. 
 En l'absence d'un nombre suffisant de champs de cacao pour permettre une détection par machine learning, et après de nombreux tests sur des données images, la première méthode a été de mosaïquer les images Landsat du territoire sur 1 an et demi puis découper l'image obtenue. 
@@ -260,5 +259,10 @@ for (var i = 0; i < nb; i++) {
 
 ## Comparaison NIR-classification
 
-Les 48 images sont ensuite extraites de Google Drive pour être traitées dans QGIS: c'est là que l'utilisateur va rassembler les 20 classes. En comparant avec les images NIR (proche-infrarouge) qui distinguent bien l'agroforesterie (ou se trouve le cacao), il pourra trier la ou les classes qui sont le plus susceptibles d'en faire partie.
-En période de pluies fortes et de maximum végétatif (fin novembre- fin mars) les agroforêts sous ombrage, plus jeunes émettent fortement dans le proche infrarouge, plus que les forêts mais moins que les cultures à ciel ouvert. En période de déclin végétatif ou de moindres pluies (fin novembre- fin mars) leur réflectance moyenne dans le proche infrarouge les distingue du reste de la végétation et particulièrement des cultures à ciel ouvert qui n'émettent plus dans ces longueurs d'onde. En augmentant les contrastes des images, les agroforêts sous ombrages deviennent évidentes. Le NDVI des agroforêts est aussi plus fort que celui des forêts primaires aux alentours.
+Les 48 images sont ensuite extraites de Google Drive pour être traitées dans QGIS: c'est là que l'utilisateur va rassembler les 20 classes.
+En période de pluies fortes et de maximum végétatif (fin novembre- fin mars) les agroforêts sous ombrage, plus jeunes émettent fortement dans le proche infrarouge, plus que les forêts mais moins que les cultures à ciel ouvert. En période de déclin végétatif ou de moindres pluies (fin novembre- fin mars) leur réflectance moyenne dans le proche infrarouge les distingue du reste de la végétation et particulièrement des cultures à ciel ouvert qui n'émettent plus dans ces longueurs d'onde. En augmentant les contrastes des images, les agroforêts sous ombrages deviennent évidentes. Le NDVI des agroforêts est aussi plus fort que celui des forêts primaires aux alentours. 
+En se servant des images NIR (proche-infrarouge) qui distinguent bien l'agroforesterie (ou se trouve le cacao) et du NDVI, l'utilisateur pourra trier la ou les classes qui sont le plus susceptibles d'en faire partie.
+
+## Lissage pour la cartographie
+
+
