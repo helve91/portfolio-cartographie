@@ -90,6 +90,21 @@ body {
 
 }
 
+.flex-container {
+
+    font-family: Arial, sans-serif;
+    
+    max-width: 700px;
+
+    margin: 50px auto;
+
+    display: grid;
+
+    gap: 30px;
+
+}
+
+
 .main-container {
 
     font-family: Arial, sans-serif;
